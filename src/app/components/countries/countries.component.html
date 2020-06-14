@@ -1,0 +1,117 @@
+<div class="jumbotron bg-white text-center">
+    <h1 class="display-4">Covid 19 Countries Tracker</h1>
+    <hr>
+    <section>
+        <div class="row">
+            <div class="col-lg-6">
+                <!--<piechart></piechart>-->
+                <div class="chart-wrapper">
+                    <canvas baseChart [data]="pieChartCountryData" [labels]="pieChartCountryLabels"
+                        [chartType]="pieChartCountryType" [options]="pieChartCountryOptions">
+                    </canvas>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <carddashboard [cardheader]='totalheader' [cardvalue]='TotalConfirmed'></carddashboard>
+                    </div>
+                    <div class="col-lg-6">
+                        <carddashboard [cardheader]='newtotalheader' [cardvalue]='NewConfirmed'></carddashboard>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <carddashboard [cardheader]='recoverheader' [cardvalue]='TotalRecovered'></carddashboard>
+                    </div>
+                    <div class="col-lg-6">
+                        <carddashboard [cardheader]='newrecovered' [cardvalue]='NewRecovered'></carddashboard>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <carddashboard [cardheader]='deatheader' [cardvalue]='TotalDeaths'></carddashboard>
+                    </div>
+                    <div class="col-lg-6">
+                        <carddashboard [cardheader]='newdeatheader' [cardvalue]='NewDeaths'></carddashboard>
+                    </div>
+                </div>
+
+                <carddashboard [cardheader]='activeheader' [cardvalue]='ActiveCase'></carddashboard>
+
+
+            </div>
+        </div>
+
+    </section>
+
+    <!--Last Updated {{lastupdated}}-->
+    <hr>
+
+
+    <!--<section>
+
+        <div class="example-table-container">
+
+            <table mat-table [dataSource]="Countries" class="example-table">
+              <ng-container matColumnDef="number">
+                <th mat-header-cell *matHeaderCellDef>#</th>
+                <td mat-cell *matCellDef="let row">{{row.number}}</td>
+              </ng-container>
+        
+              <ng-container matColumnDef="title">
+                <th mat-header-cell *matHeaderCellDef>Title</th>
+                <td mat-cell *matCellDef="let row">{{row.title}}</td>
+              </ng-container>
+        
+              <ng-container matColumnDef="state">
+                <th mat-header-cell *matHeaderCellDef>State</th>
+                <td mat-cell *matCellDef="let row">{{row.state}}</td>
+              </ng-container>
+        
+              <ng-container matColumnDef="created">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+                  Created
+                </th>
+                <td mat-cell *matCellDef="let row">{{row.created_at | date}}</td>
+              </ng-container>
+        
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          </div>
+
+    </section>-->
+
+    <hr>
+    <section>
+        <div class="container">
+            <h1 class="display-4">Countries Data</h1>
+            <table class="table">
+                <tr>
+                    <th>Country</th>
+                    <th>TotalConfirmed</th>
+                    <th>NewConfirmed</th>
+                    <th>Active Case</th>
+                    <th>TotalRecovered</th>
+                    <th>NewRecovered</th>
+                    <th>TotalDeaths</th>
+                    <th>NewDeaths</th>
+                </tr>
+                <tr *ngFor="let countrie of Countries">
+                    <td>{{countrie.Country}}</td>
+                    <td>{{countrie.TotalConfirmed| number}}</td>
+                    <td>{{countrie.NewConfirmed| number}}</td>
+                    <td>{{countrie.TotalConfirmed - countrie.TotalRecovered|number}}</td>
+                    <td>{{countrie.TotalRecovered|number}}</td>
+                    <td>{{countrie.NewRecovered|number}}</td>
+                    <td>{{countrie.TotalDeaths|number}}</td>
+                    <td>{{countrie.NewDeaths|number}}</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+</div>

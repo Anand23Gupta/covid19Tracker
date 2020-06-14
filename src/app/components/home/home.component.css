@@ -1,0 +1,25 @@
+.coronoimage{
+    height: 65%;
+    width: 65%;
+    padding-top: 10px;
+    border-radius: 100%;
+}
+
+.covidImage{
+    height: 100%;
+    width: 100%;
+    padding-top: 10px;
+}
+
+#GraphSection,#StateWiseData,#DistrictSection,#ImagesSection{
+    padding-top: 50px;
+    padding-bottom: 50px;
+   
+}
+#InfoSection{
+    padding-top: 50px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+

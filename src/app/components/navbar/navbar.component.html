@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" routerLink="/">CoVid19TracKer</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+           data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+           aria-expanded="false" aria-label="Toggle navigation"
+           (click)="toggleCollapsed()">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarSupportedContent" [ngClass]="{'collapse': collapsed, 'navbar-collapse': true}">
+          <ul class="navbar-nav">
+            <li routerLinkActive="active current">
+              <a class="nav-link"  routerLink="/">Home</a>
+            </li>
+            <li routerLinkActive="active current">
+              <a class="nav-link" routerLink="countries">Countries</a>
+            </li>
+          </ul>
+        </div>
+
+    
+  </nav>

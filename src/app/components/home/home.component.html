@@ -1,0 +1,261 @@
+<div class="jumbotron bg-white text-center">
+    <h1 class="display-4">Covid 19 India Tracker</h1>
+    <hr>
+
+    <section id="CaseSection">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <carddashboard [cardheader]='totalHeader' [cardvalue]='totalcase'></carddashboard>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <carddashboard [cardheader]='activeHeader' [cardvalue]='activeCase'></carddashboard>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <carddashboard [cardheader]='recoverHeader' [cardvalue]='discharged'></carddashboard>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <carddashboard [cardheader]='deathHeader' [cardvalue]='death'></carddashboard>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <carddashboard [cardheader]='unIdentifiedHeader' [cardvalue]='unidentified'></carddashboard>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <carddashboard [cardheader]='totalforiegnHeader' [cardvalue]='Foreigntotalcase'></carddashboard>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <section id="GraphSection">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <!-- <piechart [ChartData]='ChartData'></piechart>-->
+
+                    <div class="chart-wrapper">
+                        <canvas baseChart [data]="pieChartCountryData" [labels]="pieChartCountryLabels"
+                            [chartType]="pieChartCountryType" [options]="pieChartCountryOptions">
+                        </canvas>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-12">
+                    <!-- <barchart></barchart>-->
+                    <div class="chart-wrapper">
+                        <canvas baseChart [datasets]="barChartCountryData" [labels]="barChartCountryLabels"
+                            [options]="barChartCountryOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
+                            [chartType]="barChartType">
+                        </canvas>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <section id="InfoSection">
+        <div class="conatainer">
+            <div class="row">
+                <div class="col-lg-6">
+                   
+
+                    <h3>Protecting yourself and others from the spread COVID-19</h3>
+                    <p>You can reduce your chances of being infected or spreading COVID-19 by taking some simple precautions:</p>
+                    <ul>
+                        <li>
+                            Regularly and thoroughly clean your hands with an alcohol-based hand rub or wash them with soap and water. Why?
+                            Washing your hands with soap and water or using alcohol-based hand rub kills viruses that may be on your hands.
+                        </li>
+                        <li>Maintain at least 1 metre (3 feet) distance between yourself and others. Why? 
+                            When someone coughs, sneezes, or speaks they spray small liquid droplets from their nose or mouth which may contain virus.
+                             If you are too close, you can breathe in the droplets, including the COVID-19 virus if the person has the disease.
+                        </li>
+                        <li>Avoid going to crowded places. Why? Where people come together in crowds, you are more likely to 
+                            come into close contact with someone that has COIVD-19 and it is more difficult to maintain physical distance of 1 metre (3 feet).
+                        </li>
+                        <li>
+                            Avoid touching eyes, nose and mouth. Why? Hands touch many surfaces and can pick up viruses. Once contaminated, 
+                            hands can transfer the virus to your eyes, nose or mouth. From there, the virus can enter your body and infect you.
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <img class="float_left coronoimage" [src]=coronoimage alt="">
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <hr>
+    <section id="StateWiseData">
+        <div class="container">
+            <h4 class="display-6">State Wise Data</h4>
+            <div class="mx-auto">
+                <div class="form-group col-lg-3 col-md-6 mx-auto">
+                    <label for="states">Select State</label>
+                    <select name="states" class="form-control" id="states" #input (change)="updateValue(input.value)">
+                        <option value="{{state.loc}}" *ngFor="let state of regionaldata[0]">{{state.loc}}</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <carddashboard [cardheader]='stateTotalConfirmedHeader'
+                                [cardvalue]='stateConfirmedCasesIndian'>
+                            </carddashboard>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <carddashboard [cardheader]='stateActiveHeader' [cardvalue]='stateActive'></carddashboard>
+                        </div>
+                    
+
+                    
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <carddashboard [cardheader]='stateRecoverHeader' [cardvalue]='stateDischarged'>
+                            </carddashboard>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <carddashboard [cardheader]='stateDeathHeader' [cardvalue]='stateDeath'></carddashboard>
+                        </div>
+                    
+
+                    
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <carddashboard [cardheader]='stateIndianCaseHeaderstring'
+                                [cardvalue]='stateConfirmedCasesIndian'>
+                            </carddashboard>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <carddashboard [cardheader]='stateforiegnCaseHeader' [cardvalue]='stateConfirmedCasesForeign'>
+                            </carddashboard>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="chart-wrapper">
+                        <canvas baseChart [data]="pieChartStateData" [labels]="pieChartStateLabels"
+                            [chartType]="pieChartStateType" [options]="pieChartStateOptions">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </section>
+
+    <hr>
+
+    <section id="DistrictSection">
+
+        <h4 class="display-6"> {{stateName}} District Wise Data</h4>
+
+        <div class="container">
+            <div class="ui form">
+                <div class="inline fields">
+                    <label for="caseType">Select Case Type:</label>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" id="confirmed" value="confirmed"
+                                (click)="updateChartValue($event.target.value)" name="caseType" checked="" tabindex="0"
+                                class="hidden">
+                            <label for="confirmed">Confirmed</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" id="active" value="active"
+                                (click)="updateChartValue($event.target.value)" name="caseType" tabindex="0"
+                                class="hidden">
+                            <label for="active">Active</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" id="recovered" value="recovered"
+                                (click)="updateChartValue($event.target.value)" name="caseType" tabindex="0"
+                                class="hidden">
+                            <label for="recovered">Recovered</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" id="deceased" (click)="updateChartValue($event.target.value)"
+                                value="deceased" name="caseType" tabindex="0" class="hidden">
+                            <label for="deceased">Death</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="chart-wrapper">
+                    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+                        [plugins]="barChartPlugins" [legend]="barChartLegend" [colors]="barChartColors"
+                        [chartType]="barChartType">
+                    </canvas>
+                </div>
+            </div>
+           
+
+
+
+            <!--<barchart></barchart>  [ -->
+        </div>
+
+    </section>
+
+    <hr>
+    <section id="ImagesSection">
+        <h4 class="display-6">Protect yourself and others from getting sick</h4>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <img class="float_left covidImage" [src]=covid1image alt="">
+
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <img class="float_left covidImage" [src]=covid2image alt="">
+                
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <img class="float_left covidImage" [src]=covid3image alt="">
+                
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <img class="float_left covidImage" [src]=covid4image alt="">
+                
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <img class="float_left covidImage" [src]=covid5image alt="">
+                
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <img class="float_left covidImage" [src]=covid6image alt="">
+                
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <img class="float_left covidImage" [src]=covid7image alt="">
+                
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <img class="float_left covidImage" [src]=covid8image alt="">
+                
+            </div>
+        </div>
+    </section>
+</div>
